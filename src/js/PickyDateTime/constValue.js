@@ -41,7 +41,7 @@ const SELECTOR_YEAR_SET_NUMBER = 5;
 
 const WEEK_NAME = {
 	'en-us': ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-	'zh-cn': ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
+	'zh-cn': ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
 	'it-it': ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab']
 };
 
@@ -74,7 +74,7 @@ const MONTH_NAME = {
 		'十一月',
 		'十二月'
 	],
-	'en-us': [
+	'it-it': [
 		'Gennaio',
 		'Febbraio',
 		'Marzo',
