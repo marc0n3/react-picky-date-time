@@ -42,7 +42,7 @@ const SELECTOR_YEAR_SET_NUMBER = 5;
 const WEEK_NAME = {
 	'en-us': ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 	'zh-cn': ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
-	'it-it': ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab']
+	'it-it': [ 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab','Dom']
 };
 
 const MONTH_NAME = {
@@ -125,6 +125,10 @@ const getDaysArray = (year, month, locale = 'zh-cn') => {
 	let res = [];
 
 	let startOffset = date.getDay();
+	if (locale=="it-it") {
+		// week begins monday
+		startOffset= (startOffset+6)%7;
+	}
 	if (startOffset != 0) {
 		prevMonthDate = getDaysListByMonth(prevYear, prevMonth, names, locale);
 		for (
@@ -139,7 +143,12 @@ const getDaysArray = (year, month, locale = 'zh-cn') => {
 	thisMonthDate = getDaysListByMonth(year, month, names, locale);
 	res = [...res, ...thisMonthDate];
 
-	let endOffset = WEEK_NUMBER - thisMonthDate[thisMonthDate.length - 1].day - 1;
+	let lastDay = thisMonthDate[thisMonthDate.length - 1].day;
+	if (locale=="it-it") {
+		// week begins monday
+		lastDay= (lastDay+6)%7;
+	}
+	let endOffset = WEEK_NUMBER - lastDay - 1;
 	if (endOffset != 0) {
 		nextMonthDate = getDaysListByMonth(nextYear, nextMonth, names, locale);
 		for (let i = 0; i <= endOffset - 1; i++) {

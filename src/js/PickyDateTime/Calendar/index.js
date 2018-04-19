@@ -46,7 +46,7 @@ class Calendar extends Component {
     let year = today.getFullYear();
     let month = today.getMonth() + 1;
     let date = today.getDate();
-    let dates = getDaysArray(year, month);
+    let dates = getDaysArray(year, month,props.locale);
 
     let defaultDateDate = date;
     let defaultDateMonth = month;
@@ -59,7 +59,7 @@ class Calendar extends Component {
       defaultDateDate = Number(dateStr[1]);
       defaultDateYear = Number(dateStr[2]);
       isDefaultDateValid = true;
-      dates = getDaysArray(defaultDateYear, defaultDateMonth);
+      dates = getDaysArray(defaultDateYear, defaultDateMonth,props.locale);
     } else {
       if (props.defaultDate != '') {
         console.error('The date you provide: ' + props.defaultDate + ' is not a valid date');
@@ -125,7 +125,7 @@ class Calendar extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.pickedYearMonth != this.state.pickedYearMonth) {
-      let dates = getDaysArray(Number(this.state.pickedYearMonth.year), Number(this.state.pickedYearMonth.month));
+      let dates = getDaysArray(Number(this.state.pickedYearMonth.year), Number(this.state.pickedYearMonth.month),this.props.locale);
       this.setState({ dates });
     }
   }
