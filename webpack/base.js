@@ -12,7 +12,7 @@ const styleVariables = require(path.join(PATH.SOURCE_PATH, 'css/variables'));
 var config = (module.exports = {
   context: PATH.ROOT_PATH,
   entry: {
-    index: PATH.ROOT_PATH + 'src/js/PickyDateTime/index.js'
+    index: PATH.ROOT_PATH + 'example/index.js'
   },
   module: {
     rules: [
